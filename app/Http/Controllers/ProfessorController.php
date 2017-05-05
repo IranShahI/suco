@@ -40,9 +40,7 @@ class ProfessorController extends Controller
     public function store(Request $request)
     {
         //
-     ProfessorAuth::registerByPersonalCode($request);
-    $is=session('isloggedin');
-    dd($is);
+    
      
 
     // auth::logout();

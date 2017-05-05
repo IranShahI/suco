@@ -17,3 +17,7 @@
 // Route::post('/register','StudentController@store');
 // Route::get('/register','OperatorController@create');
 // Route::post('/register','OperatorController@store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
