@@ -11,4 +11,7 @@ class field extends Model
     {
         return $this->hasOne('App\Grade');
     }
+    public function students(){
+        return $this->hasMany('app\Student');
+    }
 }

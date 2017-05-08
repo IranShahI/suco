@@ -47,6 +47,11 @@ return [
             'provider' => 'professors',
         ],
 
+        'web_student' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -79,6 +84,12 @@ return [
         'professors' => [
             'driver' => 'eloquent',  //We are using eloquent model
             'model' => App\Professor::class,
+        ],
+
+        //Student user provider
+        'students' => [
+            'driver' => 'eloquent',  //We are using eloquent model
+            'model' => App\Student::class,
         ],
 
 

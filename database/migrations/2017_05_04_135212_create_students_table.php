@@ -20,6 +20,7 @@ class CreateStudentsTable extends Migration
             $table->string('email')->unique();
             $table->string('student_number');
             $table->string('mobile');
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
 

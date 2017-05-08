@@ -104,6 +104,7 @@ class StudentController extends Controller
             'student_number' => $data['student_number'],
             'mobile' => $data['mobile'],
             'password' => bcrypt($data['password']),
+            'field_id' => $data['field_id'],
         ]);
     }
 

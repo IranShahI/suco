@@ -11,7 +11,7 @@ class student extends Authenticatable
     //
     //Mass assignable attributes
      protected $fillable = [
-      'first_name','last_name','student_number', 'email', 'mobile', 'password',
+      'first_name','last_name','student_number', 'email', 'mobile', 'password','field_id',
     ];
 
     //hidden attributes
