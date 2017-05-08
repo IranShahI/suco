@@ -41,6 +41,12 @@ return [
             'provider' => 'users',
         ],
 
+        //Our new custom driver.
+        'web_professor' => [
+            'driver' => 'session',
+            'provider' => 'professors',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -69,6 +75,12 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+        //Professor user provider
+        'professors' => [
+            'driver' => 'eloquent',  //We are using eloquent model
+            'model' => App\Professor::class,
+        ],
+
 
         // 'users' => [
         //     'driver' => 'database',

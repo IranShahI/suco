@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\professor;
+use Auth;
 use Illuminate\Http\Request;
-use App\Helper\auth;
-use App\Helper\ProfessorAuth;
 
 class ProfessorController extends Controller
 {
@@ -39,9 +38,10 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    
-     
+        
+      $professor = $this->create_professor($request->all());
+      $this->guard()->login($professor);
+       return redirect('/');
 
     // auth::logout();
     // dd(session()->get('isloggedin'));session()->get('isloggedin')
@@ -92,4 +92,25 @@ class ProfessorController extends Controller
     {
         //
     }
+
+    protected function create_professor(array $data)
+    {
+        return Professor::create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'personal_code' => $data['personal_code'],
+            'mobile' => $data['mobile'],
+            'password' => bcrypt($data['password']),
+            'allowed' => '1',
+        ]);
+    }
+
+
+       //Get the guard to authenticate Professor
+   protected function guard()
+   {
+       return Auth::guard('web_professor');
+   }
+
 }

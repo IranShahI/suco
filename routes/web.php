@@ -10,14 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/register-professor','ProfessorController@create');
 // Route::get('/register','ProfessorController@create');
-// Route::post('/register','ProfessorController@store');
-// Route::get('/register','StudentController@create');
-// Route::post('/register','StudentController@store');
-// Route::get('/register','OperatorController@create');
-// Route::post('/register','OperatorController@store');
+Route::post('/register/professor','ProfessorController@store');
 
-Auth::routes();
+Route::get('/register','StudentController@create')->name("register");
+Route::post('/register/student','StudentController@store')->name("studentRegister");
+
+// Route::get('/register','ProfessorController@create');
+Route::post('/register/operator','OperatorController@store');
 
 Route::get('/home', 'HomeController@index')->name('home');
+//---------------------------------------------
+
+Route::post('/logout', 'StudentAuth\LoginController@logout')->name("logout");
+Route::get('/login', 'StudentAuth\LoginController@showLoginForm')->name("login");
+Route::post('/login', 'StudentAuth\LoginController@login')->name("login");

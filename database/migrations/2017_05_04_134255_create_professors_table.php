@@ -18,7 +18,7 @@ class CreateProfessorsTable extends Migration
             $table->string('personal_code')->unique();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('mobile')->nullable();
             $table->string('password');
             $table->boolean('allowed');

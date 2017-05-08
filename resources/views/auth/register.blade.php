@@ -7,18 +7,46 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('studentRegister') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">First Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" required autofocus>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('first_name'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('first_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+			<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Last Name</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" required autofocus>
+
+                                @if ($errors->has('last_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('last_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+			<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Student Number</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="student_number" value="{{ old('student_number') }}" required autofocus>
+
+                                @if ($errors->has('student_number'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('student_number') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -58,6 +86,31 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
+                            <label for="mobile" class="col-md-4 control-label">Mobile</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="mobile" class="form-control" name="mobile" value="{{ old('mobile') }}" required>
+
+                                @if ($errors->has('mobile'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('mobile') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+			            <div class="form-group">
+                                <label for="field" class="col-md-4 control-label">Major</label>
+                                <div class="col-md-6">
+                                    <select name="field_id" id="" class="form-control selectpicker"  value="" required>
+                                        @foreach($fields as $field)
+                                            <option data-subtext="{{$field->id}}">{{$field->title}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                         </div>
 
                         <div class="form-group">

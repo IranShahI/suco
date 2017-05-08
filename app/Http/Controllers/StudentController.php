@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\student;
+use Auth;
 use Illuminate\Http\Request;
+use App\field;
 
 class StudentController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +28,8 @@ class StudentController extends Controller
     public function create()
     {
         //
-        return view('student.create');
+        $fields = field::all();
+        return view('auth.register')->with('fields',$fields);
     }
 
     /**
@@ -36,7 +40,14 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+      $student = $this->create_student($request->all());
+      $this->guard()->login($student);
+       return redirect('/');
+
+    // auth::logout();
+    // dd(session()->get('isloggedin'));session()->get('isloggedin')
+     
     }
 
     /**
@@ -83,4 +94,24 @@ class StudentController extends Controller
     {
         //
     }
+
+    protected function create_student(array $data)
+    {
+        return Student::create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'student_number' => $data['student_number'],
+            'mobile' => $data['mobile'],
+            'password' => bcrypt($data['password']),
+        ]);
+    }
+
+
+       //Get the guard to authenticate Student
+   protected function guard()
+   {
+       return Auth::guard('web_student');
+   }
+
 }
